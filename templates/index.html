@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Phishing URL Detector</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Phishing URL Detector</h1>
+
+        <p>Check whether a URL is legitimate or phishing.</p>
+
+        <form method="POST">
+
+            <input
+                type="text"
+                name="url"
+                placeholder="Enter a URL..."
+                value="{{ url }}"
+                required
+            >
+
+            <button type="submit">
+                Analyze URL
+            </button>
+
+        </form>
+
+        {% if result %}
+
+            <div class="result {{ 'phishing' if is_phishing else 'legitimate' }}">
+
+                <h2>Analysis Result</h2>
+
+                <p>{{ result }}</p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
